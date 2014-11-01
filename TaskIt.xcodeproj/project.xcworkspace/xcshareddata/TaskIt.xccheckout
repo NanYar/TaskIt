@@ -1,0 +1,41 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>IDESourceControlProjectFavoriteDictionaryKey</key>
+	<false/>
+	<key>IDESourceControlProjectIdentifier</key>
+	<string>1177C6C5-6DDC-4D14-98F5-B020817389D5</string>
+	<key>IDESourceControlProjectName</key>
+	<string>TaskIt</string>
+	<key>IDESourceControlProjectOriginsDictionary</key>
+	<dict>
+		<key>D70ED613D96EF24515AF59CC052C0E2A97CF82B2</key>
+		<string>https://github.com/NanYar/TaskIt.git</string>
+	</dict>
+	<key>IDESourceControlProjectPath</key>
+	<string>TaskIt.xcodeproj</string>
+	<key>IDESourceControlProjectRelativeInstallPathDictionary</key>
+	<dict>
+		<key>D70ED613D96EF24515AF59CC052C0E2A97CF82B2</key>
+		<string>../..</string>
+	</dict>
+	<key>IDESourceControlProjectURL</key>
+	<string>https://github.com/NanYar/TaskIt.git</string>
+	<key>IDESourceControlProjectVersion</key>
+	<integer>111</integer>
+	<key>IDESourceControlProjectWCCIdentifier</key>
+	<string>D70ED613D96EF24515AF59CC052C0E2A97CF82B2</string>
+	<key>IDESourceControlProjectWCConfigurations</key>
+	<array>
+		<dict>
+			<key>IDESourceControlRepositoryExtensionIdentifierKey</key>
+			<string>public.vcs.git</string>
+			<key>IDESourceControlWCCIdentifierKey</key>
+			<string>D70ED613D96EF24515AF59CC052C0E2A97CF82B2</string>
+			<key>IDESourceControlWCCName</key>
+			<string>TaskIt</string>
+		</dict>
+	</array>
+</dict>
+</plist>

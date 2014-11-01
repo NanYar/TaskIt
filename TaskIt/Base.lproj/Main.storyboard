@@ -25,8 +25,33 @@
                                         <autoresizingMask key="autoresizingMask"/>
                                         <tableViewCellContentView key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" tableViewCell="fA3-Tp-EcG" id="SPK-93-Sug">
                                             <autoresizingMask key="autoresizingMask"/>
+                                            <subviews>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Task" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="y6t-wC-8Ja">
+                                                    <rect key="frame" x="8" y="8" width="188" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Subtask" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="yQ4-GT-x7r">
+                                                    <rect key="frame" x="8" y="37" width="188" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                                <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Date" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="1u4-8S-6Hz">
+                                                    <rect key="frame" x="218" y="27" width="94" height="21"/>
+                                                    <fontDescription key="fontDescription" type="system" pointSize="12"/>
+                                                    <color key="textColor" cocoaTouchSystemColor="darkTextColor"/>
+                                                    <nil key="highlightedColor"/>
+                                                </label>
+                                            </subviews>
                                             <color key="backgroundColor" red="1" green="1" blue="0.0" alpha="1" colorSpace="calibratedRGB"/>
                                         </tableViewCellContentView>
+                                        <connections>
+                                            <outlet property="dateLabel" destination="1u4-8S-6Hz" id="Nzf-Tk-Plh"/>
+                                            <outlet property="descriptionLabel" destination="yQ4-GT-x7r" id="Ygn-JZ-a5K"/>
+                                            <outlet property="taskLabel" destination="y6t-wC-8Ja" id="QbS-gw-iko"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -40,11 +65,12 @@
                     <navigationItem key="navigationItem" id="Pyx-Dz-erC"/>
                     <connections>
                         <outlet property="tableView" destination="sqw-nO-dR8" id="5Np-Dg-tcQ"/>
+                        <segue destination="v3F-nO-j4W" kind="show" identifier="showTaskDetail" id="McR-zo-AZx"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1136" y="375"/>
+            <point key="canvasLocation" x="525" y="445"/>
         </scene>
         <!--Navigation Controller-->
         <scene sceneID="fEb-4m-5X2">
@@ -62,7 +88,43 @@
                 </navigationController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="xYu-Dq-8pL" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="460" y="389"/>
+            <point key="canvasLocation" x="-173" y="391"/>
+        </scene>
+        <!--Task Detail View Controller-->
+        <scene sceneID="eo5-6F-ybn">
+            <objects>
+                <viewController id="v3F-nO-j4W" customClass="TaskDetailViewController" customModule="TaskIt" customModuleProvider="target" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="b9v-Ip-rg4"/>
+                        <viewControllerLayoutGuide type="bottom" id="leq-wy-lNq"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="WtQ-uW-8Yf">
+                        <rect key="frame" x="0.0" y="0.0" width="600" height="600"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Task" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="DkJ-Bv-k9h">
+                                <rect key="frame" x="16" y="94" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <textField opaque="NO" clipsSubviews="YES" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" text="Subtask" borderStyle="roundedRect" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="fhR-ym-Lqr">
+                                <rect key="frame" x="16" y="153" width="280" height="30"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                <textInputTraits key="textInputTraits"/>
+                            </textField>
+                            <datePicker contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="center" contentVerticalAlignment="center" datePickerMode="dateAndTime" minuteInterval="1" translatesAutoresizingMaskIntoConstraints="NO" id="qIw-Qq-aJd">
+                                <rect key="frame" x="0.0" y="214" width="320" height="162"/>
+                                <date key="date" timeIntervalSinceReferenceDate="436572049.28983998">
+                                    <!--2014-11-01 22:00:49 +0000-->
+                                </date>
+                            </datePicker>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                    </view>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="CXD-0p-wFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1207" y="351"/>
         </scene>
     </scenes>
 </document>
