@@ -17,14 +17,26 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     override func viewDidLoad()
     {
         super.viewDidLoad()
-        let task1 = TaskModel(task: "Study French", subTask: "Verbs", date: "01/14/2014")
-        let task2 = TaskModel(task: "Eat Dinner", subTask: "Burgers", date: "01/14/2014")
-        let task3 = TaskModel(task: "Gym", subTask: "Leg day", date: "01/14/2014")
         
-        taskArray = [task1, task2, TaskModel(task: "Gym", subTask: "Leg day", date: "01/14/2014")] // task3 als alternative Eingabe
+        let date1 = Date.from(year: 2014, month: 01, day: 01)
+        let date2 = Date.from(year: 2014, month: 8, day: 9)
+        let date3 = Date.from(year: 2014, month: 10, day: 27)
+        
+        let task1 = TaskModel(task: "Study French", subTask: "Verbs", date: date1)
+        let task2 = TaskModel(task: "Eat Dinner", subTask: "Burgers", date: date2)
+        let task3 = TaskModel(task: "Gym", subTask: "Leg day", date: date3)
+        
+        taskArray = [task1, task2, TaskModel(task: "Gym", subTask: "Leg day", date: Date.from(year: 2014, month: 10, day: 27))] // task3 als alternative Eingabe
         
         // Refresh UITableViewDataSource (= die beiden tableView Funktionen ausfuehren)
         self.tableView.reloadData() // bezieht sich auf: @IBOutlet weak var tableView: UITableView!
+    }
+    
+    override func viewDidAppear(animated: Bool) // aktualisiert die Ansicht
+    {
+        super.viewDidAppear(animated)
+        
+        self.tableView.reloadData()
     }
 
     override func didReceiveMemoryWarning()
@@ -32,10 +44,30 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         super.didReceiveMemoryWarning()
     }
     
-    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?)
+    override func prepareForSegue(segue: UIStoryboardSegue, sender: AnyObject?) // func prepareForSegue is called before a segue occurs
     {
+        if segue.identifier == "showTaskDetail"
+        {
+            let detailVC: TaskDetailViewController = segue.destinationViewController as TaskDetailViewController
+            let indexPath = self.tableView.indexPathForSelectedRow()
+            let thisTask = taskArray[indexPath!.row]
+            detailVC.detailTaskModel = thisTask
+        }
+        else if segue.identifier == "showTaskAdd"
+        {
+            let addTaskVC: AddTaskViewController = segue.destinationViewController as AddTaskViewController
+            addTaskVC.mainVC = self
+        }
     
     }
+    
+    
+    
+    @IBAction func addButtonTapped(sender: UIBarButtonItem)
+    {
+        self.performSegueWithIdentifier("showTaskAdd", sender: self)
+    }
+    
     
 
     // UITableViewDataSource
@@ -52,7 +84,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
         var cell: TaskCell = tableView.dequeueReusableCellWithIdentifier("myCell") as TaskCell // bezieht sich auf: func tableView(tableView: UITableView...
         cell.taskLabel.text = thisTask.task
         cell.descriptionLabel.text = thisTask.subTask
-        cell.dateLabel.text = thisTask.date
+        cell.dateLabel.text = Date.toString(date: thisTask.date)
         return cell
     }
     
@@ -60,6 +92,6 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     func tableView(tableView: UITableView, didSelectRowAtIndexPath indexPath: NSIndexPath)
     {
         println(indexPath.row)
-        performSegueWithIdentifier("showTaskDetail", sender: self)
+        self.performSegueWithIdentifier("showTaskDetail", sender: self)
     }
 }

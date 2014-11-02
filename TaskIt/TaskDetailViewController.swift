@@ -10,19 +10,31 @@ import UIKit
 
 class TaskDetailViewController: UIViewController
 {
+    @IBOutlet weak var taskTextField: UITextField!
+    @IBOutlet weak var subtaskTextField: UITextField!
+    @IBOutlet weak var dueDatePicker: UIDatePicker!    
+    
     var detailTaskModel: TaskModel!
+    
 
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
-        // Do any additional setup after loading the view.
+        //println(self.detailTaskModel.task + " / " + self.detailTaskModel.subTask)
+        self.taskTextField.text = self.detailTaskModel.task
+        self.subtaskTextField.text = self.detailTaskModel.subTask
+        self.dueDatePicker.date = self.detailTaskModel.date
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+    }
+    
+    
+    @IBAction func cancelButtonTapped(sender: UIBarButtonItem)
+    {
+        self.navigationController?.popViewControllerAnimated(true)
     }
 
 }
