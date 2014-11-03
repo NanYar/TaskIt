@@ -134,7 +134,11 @@
                                 <action selector="cancelButtonTapped:" destination="v3F-nO-j4W" id="v2g-gq-ig9"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Done" id="O1A-0S-eXN"/>
+                        <barButtonItem key="rightBarButtonItem" title="Done" id="O1A-0S-eXN">
+                            <connections>
+                                <action selector="doneBarButtonItemPressed:" destination="v3F-nO-j4W" id="fQb-Fg-AI2"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="dueDatePicker" destination="qIw-Qq-aJd" id="n6u-Qe-2aw"/>
@@ -144,7 +148,7 @@
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="CXD-0p-wFX" userLabel="First Responder" sceneMemberID="firstResponder"/>
             </objects>
-            <point key="canvasLocation" x="1165" y="-354"/>
+            <point key="canvasLocation" x="997" y="-371"/>
         </scene>
         <!--Add Task View Controller-->
         <scene sceneID="eg2-yh-RSn">

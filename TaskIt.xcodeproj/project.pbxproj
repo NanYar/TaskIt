@@ -18,6 +18,7 @@
 		174293B51A0509640045717E /* LaunchScreen.xib in Resources */ = {isa = PBXBuildFile; fileRef = 174293B31A0509640045717E /* LaunchScreen.xib */; };
 		174293C11A0509640045717E /* TaskItTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174293C01A0509640045717E /* TaskItTests.swift */; };
 		174293CB1A0515630045717E /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 174293CA1A0515630045717E /* TaskCell.swift */; };
+		175C81BC1A0836A100B5E657 /* CoreData.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 175C81BB1A0836A100B5E657 /* CoreData.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -46,6 +47,7 @@
 		174293BF1A0509640045717E /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		174293C01A0509640045717E /* TaskItTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskItTests.swift; sourceTree = "<group>"; };
 		174293CA1A0515630045717E /* TaskCell.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		175C81BB1A0836A100B5E657 /* CoreData.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreData.framework; path = System/Library/Frameworks/CoreData.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -53,6 +55,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				175C81BC1A0836A100B5E657 /* CoreData.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -105,6 +108,7 @@
 		174293A81A0509640045717E /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
+				175C81BB1A0836A100B5E657 /* CoreData.framework */,
 				174293A91A0509640045717E /* Info.plist */,
 			);
 			name = "Supporting Files";

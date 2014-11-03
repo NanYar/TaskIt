@@ -20,13 +20,13 @@ class AddTaskViewController: UIViewController
     override func viewDidLoad()
     {
         super.viewDidLoad()
-
     }
 
     override func didReceiveMemoryWarning()
     {
         super.didReceiveMemoryWarning()
     }
+    
     
     @IBAction func cancelButtonTapped(sender: UIButton)
     {
@@ -35,9 +35,9 @@ class AddTaskViewController: UIViewController
     
     @IBAction func addTaskButtonTapped(sender: UIButton)
     {
-        var task = TaskModel(task: taskTextField.text, subTask: subtaskTextField.text, date: dueDatePicker.date)
-        mainVC.taskArray.append(task)
+        var task = TaskModel(task: taskTextField.text, subTask: subtaskTextField.text, date: dueDatePicker.date, isCompleted: false)
+        mainVC.baseArray[0].append(task)
+        
         self.dismissViewControllerAnimated(true, completion: nil)
-    }    
-
+    }
 }
