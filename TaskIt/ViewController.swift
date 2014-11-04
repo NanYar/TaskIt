@@ -101,7 +101,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     
     func tableView(tableView: UITableView, titleForHeaderInSection section: Int) -> String?
     {
-        if section == 0
+        if section == 0 && !isAllCompleted()
         {
             return "To do"
         }
@@ -115,7 +115,7 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     {
         let thisTask = fetchedResultsController.objectAtIndexPath(indexPath) as TaskModel
         
-        if indexPath.section == 0
+        if indexPath.section == 0 && !isAllCompleted()
         {
             thisTask.completed = true
         }
@@ -152,22 +152,20 @@ class ViewController: UIViewController, UITableViewDataSource, UITableViewDelega
     }
     
     
+    // Solves titleForHeader bug (by arogan)
+    func isAllCompleted() -> Bool
+    {
+        var ret: Bool = false
+        
+        if fetchedResultsController.sections!.count == 1
+        {
+            if fetchedResultsController.sections![0].numberOfObjects > 0
+            {
+                var indexPath = NSIndexPath(forItem: 0, inSection: 0)
+                var task = fetchedResultsController.objectAtIndexPath(indexPath) as TaskModel
+                ret = task.completed
+            }
+        }
+        return ret
+    }
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-

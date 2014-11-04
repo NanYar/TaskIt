@@ -9,13 +9,14 @@
 import Foundation
 import CoreData
 
+
 @objc(TaskModel) // = Objective-C Bridge
+
 
 class TaskModel: NSManagedObject {
 
     @NSManaged var date: NSDate
-    @NSManaged var completed: NSNumber
+    @NSManaged var completed: Bool //NSNumber
     @NSManaged var subtask: String
     @NSManaged var task: String
-
 }
