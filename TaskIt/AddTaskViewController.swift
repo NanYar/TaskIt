@@ -7,15 +7,14 @@
 //
 
 import UIKit
+import CoreData
 
 class AddTaskViewController: UIViewController
 {
     @IBOutlet weak var taskTextField: UITextField!
     @IBOutlet weak var subtaskTextField: UITextField!
     @IBOutlet weak var dueDatePicker: UIDatePicker!
-    
-    var mainVC: ViewController!
-    
+        
 
     override func viewDidLoad()
     {
@@ -35,8 +34,20 @@ class AddTaskViewController: UIViewController
     
     @IBAction func addTaskButtonTapped(sender: UIButton)
     {
-        var task = TaskModel(task: taskTextField.text, subTask: subtaskTextField.text, date: dueDatePicker.date, isCompleted: false)
-        mainVC.baseArray[0].append(task)
+        let appDelegate = (UIApplication.sharedApplication().delegate as AppDelegate) // = Zugriff auf AppDelegate.swift
+        let managedObjectContext = appDelegate.managedObjectContext
+        let entityDescription = NSEntityDescription.entityForName("TaskModel", inManagedObjectContext: managedObjectContext!)
+        let task = TaskModel(entity: entityDescription!, insertIntoManagedObjectContext: managedObjectContext!) // = Problem mit Autocomplete (Xcode Bug?)
+        task.task = taskTextField.text
+        task.subtask = subtaskTextField.text
+        task.date = dueDatePicker.date
+        task.completed = false
+        
+        appDelegate.saveContext()
+        
+        var request = NSFetchRequest(entityName: "TaskModel")
+        var error: NSError? = nil
+        var results: NSArray = managedObjectContext!.executeFetchRequest(request, error: &error)!
         
         self.dismissViewControllerAnimated(true, completion: nil)
     }
